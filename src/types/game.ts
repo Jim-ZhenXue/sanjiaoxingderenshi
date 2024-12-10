@@ -1,7 +1,14 @@
 export interface Shape {
   id: number;
-  type: 'triangle' | 'irregular';
+  type: 'triangle' | 'irregular' | 'arc';
   points: [number, number][];
+  arcParams?: {
+    rx: number;
+    ry: number;
+    xAxisRotation: number;
+    largeArcFlag: number;
+    sweepFlag: number;
+  };
 }
 
 export interface Point {

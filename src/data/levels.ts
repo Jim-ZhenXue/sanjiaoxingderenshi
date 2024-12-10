@@ -1,3 +1,4 @@
+// src/data/levels.ts
 import { Level } from '../types/game';
 
 export const levels: Level[] = [
@@ -11,60 +12,101 @@ export const levels: Level[] = [
         id: 1, 
         type: 'triangle',
         // 锐角三角形 (约60-60-60度)
-        points: [[12, 20], [4, 8], [20, 8]]
+        points: [[24, 40], [8, 16], [40, 25]]
       },
       { 
         id: 2, 
         type: 'irregular',
-        points: [[5, 5], [12, 2], [18, 8], [15, 15], [8, 12], [6, 8]]
+        points: [[10, 10], [30, 4], [36, 30], [16, 24]]
       },
       { 
         id: 3, 
-        type: 'triangle',
-        // 直角三角形 (90-45-45度)
-        points: [[4, 4], [4, 20], [20, 4]]
+        type: 'arc',
+        points: [
+          [25, 35],  // 底部点 (原来是顶点)
+          [10, 8],   // 左顶点 (原来是左底点)
+          [40, 8]    // 右顶点 (原来是右底点)
+        ],
+        arcParams: {
+          rx: 20,
+          ry: 12,
+          xAxisRotation: 0,
+          largeArcFlag: 1,
+          sweepFlag: 0  // Changed from 1 to 0 to flip the arc direction
+        }
       },
       { 
         id: 4, 
-        type: 'irregular',
-        points: [[4, 8], [10, 4], [16, 6], [18, 12], [12, 16], [6, 14], [5, 10]]
+        type: 'arc',
+        points: [[10, 10], [40, 10]],
+        arcParams: {
+          rx: 15,
+          ry: 15,
+          xAxisRotation: 0,
+          largeArcFlag: 1,
+          sweepFlag: 1
+        }
       },
       { 
         id: 5, 
-        type: 'triangle',
-        // 钝角三角形 (140-20-20度)
-        points: [[4, 4], [20, 4], [0, 16]]
+        type: 'irregular',
+        points: [[12, 12], [24, 8], [40, 46], [10, 20], [14, 16]]
       },
       { 
         id: 6, 
         type: 'irregular',
-        points: [[8, 5], [14, 3], [19, 8], [17, 14], [12, 18], [5, 12], [7, 8]]
+        // 五角星的十个顶点，按顺序接
+        points: [
+          [25, 8],   // 顶部点
+          [20, 18],  // 内部点
+          [10, 18],  // 左外点
+          [18, 25],  // 内部点
+          [14, 35],  // 左下外点
+          [25, 28],  // 内部点
+          [36, 35],  // 右下外点
+          [32, 25],  // 内部点
+          [40, 18],  // 右外点
+          [30, 18]   // 内部点
+        ]
       },
       { 
         id: 7, 
-        type: 'irregular',
-        points: [[3, 12], [8, 4], [14, 3], [18, 8], [16, 14], [10, 16], [4, 14]]
+        type: 'arc',
+        points: [
+          [25, 8],  // 顶点
+          [10, 30], // 左底点
+          [40, 30]  // 右底点
+        ],
+        arcParams: {
+          rx: 20,
+          ry: 15,
+          xAxisRotation: 0,
+          largeArcFlag: 0,
+          sweepFlag: 0
+        }
       },
       { 
         id: 8, 
-        type: 'irregular',
-        points: [[6, 6], [12, 4], [18, 7], [20, 13], [15, 18], [8, 15], [5, 10], [7, 8]]
+        type: 'triangle',
+        // 钝角三角形 (140-20-20度)
+        points: [[8, 8], [40, 8], [0, 32]]
       }
     ],
-    correctAnswers: [1, 3, 5]
+    correctAnswers: [1, 8]
   },
+  // 其他关卡数据
   {
     id: 2,
     title: "构建三角形",
     description: "选择三个点来构建一个三角形",
     type: "construction",
     data: [
-      { id: 1, x: 30, y: 50 },
-      { id: 2, x: 170, y: 50 },
-      { id: 3, x: 240, y: 50 },
-      { id: 4, x: 150, y: 210 }
+      { id: 1, x: 50, y: 50 },
+      { id: 2, x: 350, y: 50 },
+      { id: 3, x: 150, y: 200 },
+      { id: 4, x: 500, y: 50 }
     ],
-    correctAnswers: [1, 2, 4]
+    correctAnswers: [1, 2, 3]
   },
   {
     id: 3,
@@ -73,9 +115,9 @@ export const levels: Level[] = [
     type: "interactive",
     data: {
       vertices: [
-        { id: 1, x: 100, y: 50 },
-        { id: 2, x: 50, y: 150 },
-        { id: 3, x: 150, y: 150 }
+        { id: 1, x: 500, y: 50 },
+        { id: 2, x: 450, y: 150 },
+        { id: 3, x: 550, y: 150 }
       ]
     }
   },
@@ -91,7 +133,7 @@ export const levels: Level[] = [
         sun: { x: 450, y: 50, radius: 30, color: "#FFD700" }
       },
       triangles: [
-        { 
+        {
           id: 1,
           type: "slide",
           points: [
