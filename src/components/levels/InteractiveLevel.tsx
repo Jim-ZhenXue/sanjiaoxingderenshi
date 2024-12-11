@@ -5,7 +5,7 @@ interface InteractiveLevelProps {
   data: {
     vertices: Point[];
   };
-  onNextLevel: () => void;
+  onNextLevel?: () => void;  // 添加 onNextLevel 属性
 }
 
 const InteractiveLevel: React.FC<InteractiveLevelProps> = ({ data, onNextLevel }) => {
@@ -16,7 +16,7 @@ const InteractiveLevel: React.FC<InteractiveLevelProps> = ({ data, onNextLevel }
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowNextButton(true);
-    }, 10000);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -74,7 +74,7 @@ const InteractiveLevel: React.FC<InteractiveLevelProps> = ({ data, onNextLevel }
           />
         ))}
       </svg>
-      {showNextButton && (
+      {showNextButton && onNextLevel && (
         <button
           className="mt-4 px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg font-bold transition-colors animate-fast-pulse"
           onClick={onNextLevel}

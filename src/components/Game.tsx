@@ -40,6 +40,13 @@ export const Game: React.FC = () => {
 
   // 处理进入下一关
   const handleNextLevel = useCallback(() => {
+    if (currentLevel === 2) {  // 如果是"探索三角形"关卡
+      setCurrentLevel(3);  // 直接进入"生活中的三角形"关卡
+      setSelectedItems([]);
+      setIsCorrect(false);
+      return;
+    }
+    
     if (isCorrect && currentLevel < levels.length - 1) {
       // 增加得分（每个正确答案得一分）
       const pointsEarned = level.correctAnswers?.length || 0;
@@ -81,6 +88,7 @@ export const Game: React.FC = () => {
             level={level}
             onSelect={handleSelect}
             selectedItems={selectedItems}
+            onNextLevel={handleNextLevel}
           />
         </div>
 
