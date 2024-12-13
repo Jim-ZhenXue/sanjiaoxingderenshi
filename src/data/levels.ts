@@ -178,7 +178,7 @@ export const levels: Level[] = [
             { x: 490, y: 150 }
           ]
         }
-      ]ff
+      ]
     },
     correctAnswers: [1, 2, 3, 4, 5]
   }
