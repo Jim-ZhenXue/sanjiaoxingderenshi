@@ -182,4 +182,4 @@ export const levels: Level[] = [
     },
     correctAnswers: [1, 2, 3, 4, 5]
   }
-];s
+];
