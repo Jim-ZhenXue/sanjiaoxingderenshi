@@ -134,6 +134,42 @@ export const levels: Level[] = [
       },
       triangles: [
         {
+          id: 1,
+          type: "slide",
+          points: [
+            { x: 50, y: 250 },
+            { x: 150, y: 100 },
+            { x: 250, y: 250 }
+          ]
+        },
+        {
+          id: 2,
+          type: "swingSet",
+          points: [
+            { x: 300, y: 200 },
+            { x: 350, y: 100 },
+            { x: 400, y: 200 }
+          ]
+        },
+        {
+          id: 3,
+          type: "sandbox",
+          points: [
+            { x: 100, y: 300 },
+            { x: 200, y: 250 },
+            { x: 300, y: 300 }
+          ]
+        },
+        {
+          id: 4,
+          type: "flag",
+          points: [
+            { x: 380, y: 50 },
+            { x: 400, y: 20 },
+            { x: 420, y: 50 }
+          ]
+        },
+        {
           id: 5,
           type: "tree",
           points: [
