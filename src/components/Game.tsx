@@ -2,12 +2,16 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { levels } from '../data/levels';
 import { GameControls } from './GameControls';
 import GameLevel from './GameLevel';
+import { Celebration } from './Celebration';
+import { CareerLink } from './CareerLink';
 
 export const Game: React.FC = () => {
   const [currentLevel, setCurrentLevel] = useState(0);
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
   const [score, setScore] = useState(0);
   const [isCorrect, setIsCorrect] = useState(false);
+  const [showCelebration, setShowCelebration] = useState(false);
+  const [showCareerLink, setShowCareerLink] = useState(false);
 
   const level = levels[currentLevel];
 
@@ -47,19 +51,34 @@ export const Game: React.FC = () => {
       return;
     }
     
-    if (isCorrect && currentLevel < levels.length - 1) {
+    if (isCorrect) {
       // 增加得分（每个正确答案得一分）
       const pointsEarned = level.correctAnswers?.length || 0;
       setScore(prev => prev + pointsEarned);
       
-      // 进入下一关
-      setCurrentLevel(prev => prev + 1);
-      // 重置选择状态
-      setSelectedItems([]);
-      // 重置正确状态
-      setIsCorrect(false);
+      if (currentLevel < levels.length - 1) {
+        // 进入下一关
+        setCurrentLevel(prev => prev + 1);
+        // 重置选择状态
+        setSelectedItems([]);
+        // 重置正确状态
+        setIsCorrect(false);
+      } else {
+        // 如果是最后一关，显示庆祝页面
+        setShowCelebration(true);
+      }
     }
   }, [currentLevel, isCorrect, level.correctAnswers?.length]);
+
+  // 处理游戏重新开始
+  const handleGameRestart = useCallback(() => {
+    setCurrentLevel(0);
+    setSelectedItems([]);
+    setScore(0);
+    setIsCorrect(false);
+    setShowCelebration(false);
+    setShowCareerLink(false);
+  }, []);
 
   // 当关卡改变时，重置状态
   useEffect(() => {
@@ -68,38 +87,48 @@ export const Game: React.FC = () => {
   }, [currentLevel]);
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4">
-      <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-lg p-8">
-        <h1 className="text-3xl font-bold text-center mb-8">三角形探索之旅</h1>
-        
-        {/* 进度条 */}
-        <div className="mb-8">
-          <div className="h-2 bg-gray-200 rounded-full">
-            <div 
-              className="h-full bg-blue-500 rounded-full transition-all duration-300"
-              style={{ width: `${((currentLevel + 1) / levels.length) * 100}%` }}
+    <>
+      {showCareerLink ? (
+        <CareerLink onRestart={handleGameRestart} score={score} />
+      ) : showCelebration ? (
+        <Celebration 
+          onFinish={() => setShowCareerLink(true)} 
+          score={score} 
+        />
+      ) : (
+        <div className="min-h-screen bg-gradient-to-b from-blue-100 to-purple-100 p-5">
+          <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-5">
+            <h1 className="text-2xl font-bold text-center mb-4">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-pink-500 to-purple-600 animate-gradient tech-font">
+                三角形
+              </span>
+              <span className="text-purple-600">探索之旅</span>
+            </h1>
+            
+            {/* 关卡内容 */}
+            <div className="mb-8">
+              <div className="bg-[#FFFFE0] p-4 rounded-lg mb-4">
+                <h1 className="text-xl font-bold mb-4">{level.title}</h1>
+                <p className="text-base">{level.description}</p>
+              </div>
+              <GameLevel
+                level={level}
+                onSelect={handleSelect}
+                selectedItems={selectedItems}
+                onNextLevel={handleNextLevel}
+              />
+            </div>
+
+            {/* 控制面板 */}
+            <GameControls
+              score={score}
+              level={currentLevel + 1}
+              isCorrect={isCorrect}
+              onNextLevel={handleNextLevel}
             />
           </div>
         </div>
-
-        {/* 关卡内容 */}
-        <div className="mb-8">
-          <GameLevel
-            level={level}
-            onSelect={handleSelect}
-            selectedItems={selectedItems}
-            onNextLevel={handleNextLevel}
-          />
-        </div>
-
-        {/* 控制面板 */}
-        <GameControls
-          score={score}
-          level={currentLevel + 1}
-          isCorrect={isCorrect}
-          onNextLevel={handleNextLevel}
-        />
-      </div>
-    </div>
+      )}
+    </>
   );
-}; 
+};

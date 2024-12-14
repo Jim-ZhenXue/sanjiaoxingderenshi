@@ -50,11 +50,11 @@ const IdentificationLevel: React.FC<IdentificationLevelProps> = ({ data, onSelec
           key={shape.id}
           onClick={() => onSelect(shape.id)}
           className={clsx(
-            'p-8 border-2 rounded-lg transition-all duration-200',
+            'p-8 transition-all duration-200',
             'hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500',
             selectedItems.includes(shape.id)
-              ? 'border-blue-500 bg-blue-50'
-              : 'border-gray-200'
+              ? 'bg-blue-50'
+              : ''
           )}
         >
           {renderShape(shape)}

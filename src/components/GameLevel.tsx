@@ -30,8 +30,6 @@ const GameLevel: React.FC<GameLevelProps> = ({ level, onSelect, onNextLevel, sel
 
   return (
     <div className="w-full">
-      <h2 className="text-2xl font-bold mb-4">{level.title}</h2>
-      <p className="text-gray-600 mb-6">{level.description}</p>
       {renderLevel()}
     </div>
   );

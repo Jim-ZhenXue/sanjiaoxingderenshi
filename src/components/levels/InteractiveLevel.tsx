@@ -36,7 +36,7 @@ const InteractiveLevel: React.FC<InteractiveLevelProps> = ({ data, onNextLevel }
     setVertices(prev =>
       prev.map(v =>
         v.id === draggedVertex
-          ? { ...v, x: Math.max(0, Math.min(x, 700)), y: Math.max(0, Math.min(y, 700)) }
+          ? { ...v, x: Math.max(0, Math.min(x, 850)), y: Math.max(0, Math.min(y, 850)) }
           : v
       )
     );
@@ -49,7 +49,7 @@ const InteractiveLevel: React.FC<InteractiveLevelProps> = ({ data, onNextLevel }
   return (
     <div className="flex flex-col items-center">
       <svg
-        className="w-full h-[300px] border border-gray-200 rounded-lg"
+        className="w-full h-[300px]"
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}

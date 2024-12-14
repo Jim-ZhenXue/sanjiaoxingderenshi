@@ -124,7 +124,7 @@ export const levels: Level[] = [
   {
     id: 4,
     title: "生活中的三角形",
-    description: "在操场场景中找出所有的三角形",
+    description: "找出图中所有的三角形",
     type: "realWorld",
     data: {
       elements: {
@@ -135,51 +135,24 @@ export const levels: Level[] = [
       triangles: [
         {
           id: 1,
-          type: "slide",
+          type: "roof",
           points: [
-            { x: 50, y: 250 },
-            { x: 150, y: 100 },
-            { x: 250, y: 250 }
+            { x: 190, y: 230 },
+            { x: 250, y: 180 },
+            { x: 310, y: 230 }
           ]
         },
         {
           id: 2,
-          type: "swingSet",
-          points: [
-            { x: 300, y: 200 },
-            { x: 350, y: 100 },
-            { x: 400, y: 200 }
-          ]
-        },
-        {
-          id: 3,
-          type: "sandbox",
-          points: [
-            { x: 100, y: 300 },
-            { x: 200, y: 250 },
-            { x: 300, y: 300 }
-          ]
-        },
-        {
-          id: 4,
-          type: "flag",
-          points: [
-            { x: 380, y: 50 },
-            { x: 400, y: 20 },
-            { x: 420, y: 50 }
-          ]
-        },
-        {
-          id: 5,
           type: "tree",
           points: [
-            { x: 450, y: 150 },
-            { x: 470, y: 100 },
-            { x: 490, y: 150 }
+            { x: 450, y: 300 },
+            { x: 470, y: 250 },
+            { x: 490, y: 300 }
           ]
         }
       ]
     },
-    correctAnswers: [1, 2, 3, 4, 5]
+    correctAnswers: [1, 2]
   }
 ];
