@@ -5,7 +5,7 @@ interface InteractiveLevelProps {
   data: {
     vertices: Point[];
   };
-  onNextLevel?: () => void;  // 添加 onNextLevel 属性
+  onNextLevel?: () => void;  
 }
 
 const InteractiveLevel: React.FC<InteractiveLevelProps> = ({ data, onNextLevel }) => {
@@ -16,7 +16,7 @@ const InteractiveLevel: React.FC<InteractiveLevelProps> = ({ data, onNextLevel }
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowNextButton(true);
-    }, 2000);
+    }, 7000);
 
     return () => clearTimeout(timer);
   }, []);
