@@ -65,7 +65,7 @@ export const CareerLink: React.FC<CareerLinkProps> = ({ score, onRestart }) => {
               <p className="text-sm text-gray-600">结构分析与设计</p>
             </div>
             <div className="bg-white p-3 rounded shadow">
-              <p className="font-bold text-purple-600">1数学教师</p>
+              <p className="font-bold text-purple-600">数学教师</p>
               <p className="text-sm text-gray-600">几何知识传授</p>
             </div>
           </div>
