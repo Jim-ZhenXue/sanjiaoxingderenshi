@@ -15,8 +15,38 @@ export const Game: React.FC = () => {
 
   const level = levels[currentLevel];
 
+  // 检查三点是否在一条直线上
+  const arePointsCollinear = useCallback((points: { x: number; y: number }[]) => {
+    if (points.length !== 3) return false;
+    
+    const [p1, p2, p3] = points;
+    
+    // 使用斜率法检查三点是否共线
+    // (y2-y1)/(x2-x1) = (y3-y1)/(x3-x1)
+    // 为避免除以零，我们转换公式为：
+    // (y2-y1)(x3-x1) = (y3-y1)(x2-x1)
+    const area = p1.x * (p2.y - p3.y) + p2.x * (p3.y - p1.y) + p3.x * (p1.y - p2.y);
+    
+    // 如果面积接近0，则三点共线
+    return Math.abs(area) < 1;
+  }, []);
+
   // 检查答案是否正确
   const checkAnswer = useCallback(() => {
+    // 如果是第二关（构建三角形）
+    if (currentLevel === 1 && selectedItems.length === 3) {
+      // 获取选中点的坐标
+      const selectedPoints = selectedItems.map(id => 
+        level.data.find(p => p.id === id)
+      ).filter((p): p is { id: number; x: number; y: number } => p !== undefined);
+
+      // 检查是否三点共线
+      if (arePointsCollinear(selectedPoints)) {
+        return false;
+      }
+      return true;
+    }
+
     if (!level.correctAnswers) return false;
     
     // 检查是否所有正确答案都被选中
@@ -28,7 +58,7 @@ export const Game: React.FC = () => {
     const noExtraSelected = selectedItems.length === level.correctAnswers.length;
     
     return allCorrectSelected && noExtraSelected;
-  }, [level.correctAnswers, selectedItems]);
+  }, [level.correctAnswers, selectedItems, currentLevel, level.data, arePointsCollinear]);
 
   // 当选择改变时检查答案
   useEffect(() => {
@@ -37,10 +67,25 @@ export const Game: React.FC = () => {
 
   // 处理选择图形
   const handleSelect = useCallback((id: number) => {
-    setSelectedItems(prev => 
-      prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]
-    );
-  }, []);
+    setSelectedItems(prev => {
+      // 如果是第二关（构建三角形）
+      if (currentLevel === 1) {
+        // 如果点已经被选中，移除它
+        if (prev.includes(id)) {
+          return prev.filter(i => i !== id);
+        }
+        // 如果还没选满3个点，添加新点
+        if (prev.length < 3) {
+          return [...prev, id];
+        }
+        // 如果已经选了3个点，不做任何改变
+        return prev;
+      }
+      
+      // 其他关卡的原有逻辑
+      return prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id];
+    });
+  }, [currentLevel]);
 
   // 处理进入下一关
   const handleNextLevel = useCallback(() => {
