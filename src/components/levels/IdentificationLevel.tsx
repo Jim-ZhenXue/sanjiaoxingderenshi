@@ -34,8 +34,8 @@ const IdentificationLevel: React.FC<IdentificationLevelProps> = ({ data, onSelec
       <svg width="120" height="125" viewBox="-10 -10 70 70" className="transform scale-75 sm:scale-100">
         <path
           d={pathData}
-          fill={selectedItems.includes(shape.id) ? 'rgba(59, 130, 246, 0.1)' : 'none'}
-          stroke={selectedItems.includes(shape.id) ? '#3B82F6' : 'currentColor'}
+          fill={selectedItems.includes(shape.id) ? 'rgba(59, 130, 246, 0.2)' : 'none'}
+          stroke={selectedItems.includes(shape.id) ? '#3B82F6' : '#9CA3AF'}
           strokeWidth={selectedItems.includes(shape.id) ? '0.75' : '0.25'}
           className={clsx(
             'transition-all duration-300',
@@ -54,10 +54,10 @@ const IdentificationLevel: React.FC<IdentificationLevelProps> = ({ data, onSelec
           onClick={() => onSelect(shape.id)}
           className={clsx(
             'p-4 transition-all duration-300',
-            'hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500',
+            'hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500',
             'touch-manipulation transform',
             selectedItems.includes(shape.id)
-              ? 'bg-blue-100 shadow-lg scale-105'
+              ? 'bg-blue-900 shadow-lg scale-105'
               : ''
           )}
         >

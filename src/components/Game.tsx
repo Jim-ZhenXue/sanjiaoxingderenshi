@@ -157,7 +157,7 @@ export const Game: React.FC = () => {
         <FinalScore onRestart={handleGameRestart} />
       ) : (
         <div className="min-h-screen bg-black p-2 sm:p-5">
-          <div className="w-full max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-3 sm:p-5">
+          <div className="w-full max-w-4xl mx-auto">
             <h1 className="text-xl sm:text-2xl font-bold text-center mb-2 sm:mb-4">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-pink-500 to-purple-600 animate-gradient tech-font">
                 三角形
@@ -167,7 +167,7 @@ export const Game: React.FC = () => {
             
             {/* 关卡内容 */}
             <div className="mb-4 sm:mb-8">
-              <div className="bg-[#FFFFE0] p-3 sm:p-4 rounded-lg mb-2 sm:mb-4">
+              <div className="bg-gray-900 text-gray-100 p-3 sm:p-4 rounded-lg mb-2 sm:mb-4">
                 <h1 className="text-lg sm:text-xl font-bold mb-2 sm:mb-4">{level.title}</h1>
                 <p className="text-sm sm:text-base">{level.description}</p>
               </div>

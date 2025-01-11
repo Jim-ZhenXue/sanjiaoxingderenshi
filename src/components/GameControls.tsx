@@ -17,10 +17,10 @@ export const GameControls: React.FC<GameControlsProps> = ({
     <div className="relative w-full h-full">
       <div className="flex flex-col items-center gap-2 sm:gap-4">
         <div className="flex gap-3 sm:gap-6 items-center">
-          <div className="text-base sm:text-lg bg-purple-100 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg">
+          <div className="text-base sm:text-lg bg-purple-900 text-purple-100 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg">
             关卡: <span className="font-bold">{level}</span>
           </div>
-          <div className="text-base sm:text-lg bg-green-100 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg">
+          <div className="text-base sm:text-lg bg-green-900 text-green-100 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg">
             得分: <span className="font-bold">{score}</span>
           </div>
         </div>
