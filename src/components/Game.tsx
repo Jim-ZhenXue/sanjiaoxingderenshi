@@ -156,7 +156,7 @@ export const Game: React.FC = () => {
       ) : showFinalScore ? (
         <FinalScore onRestart={handleGameRestart} />
       ) : (
-        <div className="min-h-screen bg-gradient-to-b from-blue-100 to-purple-100 p-2 sm:p-5">
+        <div className="min-h-screen bg-black p-2 sm:p-5">
           <div className="w-full max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-3 sm:p-5">
             <h1 className="text-xl sm:text-2xl font-bold text-center mb-2 sm:mb-4">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-pink-500 to-purple-600 animate-gradient tech-font">
