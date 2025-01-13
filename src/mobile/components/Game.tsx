@@ -98,7 +98,7 @@ export const MobileGame: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
       {!showFinalScore ? (
-        <>
+        <div className="w-full">
           <GameLevel
             level={level}
             selectedItems={selectedItems}
@@ -113,7 +113,7 @@ export const MobileGame: React.FC = () => {
           />
           {showCelebration && <Celebration />}
           {showCareerLink && <CareerLink />}
-        </>
+        </div>
       ) : (
         <FinalScore score={score} onRestart={restartGame} />
       )}
