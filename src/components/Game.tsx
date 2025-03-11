@@ -5,6 +5,7 @@ import GameLevel from './GameLevel';
 import { Celebration } from './Celebration';
 import { CareerLink } from './CareerLink';
 import { FinalScore } from './FinalScore';
+import { soundManager } from '../utils/SoundManager';
 
 export const Game: React.FC = () => {
   const [currentLevel, setCurrentLevel] = useState(0);
@@ -64,11 +65,24 @@ export const Game: React.FC = () => {
 
   // 当选择改变时检查答案
   useEffect(() => {
-    setIsCorrect(checkAnswer());
-  }, [selectedItems, checkAnswer]);
+    const isAnswerCorrect = checkAnswer();
+    setIsCorrect(isAnswerCorrect);
+    
+    // 当答案状态改变且有选择时播放音效
+    if (selectedItems.length > 0) {
+      if (isAnswerCorrect && !isCorrect) {
+        soundManager.play('correct');
+      } else if (!isAnswerCorrect && selectedItems.length === (level.correctAnswers?.length || 0)) {
+        soundManager.play('wrong');
+      }
+    }
+  }, [selectedItems, checkAnswer, isCorrect, level.correctAnswers]);
 
   // 处理选择图形
   const handleSelect = useCallback((id: number) => {
+    // 播放点击音效
+    soundManager.play('click');
+    
     setSelectedItems(prev => {
       // 如果是第二关（构建三角形）
       if (currentLevel === 1) {
@@ -92,6 +106,7 @@ export const Game: React.FC = () => {
   // 处理进入下一关
   const handleNextLevel = useCallback(() => {
     if (currentLevel === 2) {  // 如果是"探索三角形"关卡
+      soundManager.play('levelComplete');
       setScore(prev => prev + 10);  // 添加10分
       setCurrentLevel(3);  // 直接进入"生活中的三角形"关卡
       setSelectedItems([]);
@@ -100,6 +115,9 @@ export const Game: React.FC = () => {
     }
     
     if (isCorrect) {
+      // 播放关卡完成音效
+      soundManager.play('levelComplete');
+      
       // 每关得10分
       setScore(prev => prev + 10);
       
@@ -139,6 +157,13 @@ export const Game: React.FC = () => {
     setSelectedItems([]);
     setIsCorrect(false);
   }, [currentLevel]);
+
+  // 庆祝效果显示时播放庆祝音效
+  useEffect(() => {
+    if (showCelebration) {
+      soundManager.play('celebration');
+    }
+  }, [showCelebration]);
 
   return (
     <>

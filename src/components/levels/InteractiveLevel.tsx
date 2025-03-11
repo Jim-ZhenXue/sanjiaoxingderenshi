@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Point } from '../../types/game';
+import { soundManager } from '../../utils/SoundManager';
 
 interface InteractiveLevelProps {
   data: {
@@ -20,12 +21,20 @@ const InteractiveLevel: React.FC<InteractiveLevelProps> = ({ data, onNextLevel }
     }
   }, [operationCount]);
 
+  useEffect(() => {
+    if (showNextButton) {
+      soundManager.play('correct');
+    }
+  }, [showNextButton]);
+
   const handleMouseDown = (id: number) => {
+    soundManager.play('click');
     setDraggedVertex(id);
   };
 
   const handleTouchStart = (id: number, e: React.TouchEvent) => {
     e.preventDefault();
+    soundManager.play('click');
     setDraggedVertex(id);
   };
 
@@ -67,6 +76,7 @@ const InteractiveLevel: React.FC<InteractiveLevelProps> = ({ data, onNextLevel }
 
   const handleMouseUp = () => {
     if (draggedVertex !== null) {
+      soundManager.play('click');
       setOperationCount(prev => prev + 1);
     }
     setDraggedVertex(null);
@@ -75,6 +85,7 @@ const InteractiveLevel: React.FC<InteractiveLevelProps> = ({ data, onNextLevel }
   const handleTouchEnd = (e: React.TouchEvent) => {
     e.preventDefault();
     if (draggedVertex !== null) {
+      soundManager.play('click');
       setOperationCount(prev => prev + 1);
     }
     setDraggedVertex(null);
@@ -124,7 +135,10 @@ const InteractiveLevel: React.FC<InteractiveLevelProps> = ({ data, onNextLevel }
       </svg>
       {showNextButton && onNextLevel && (
         <button
-          onClick={onNextLevel}
+          onClick={() => {
+            soundManager.play('levelComplete');
+            onNextLevel();
+          }}
           className="absolute bottom-4 right-4 px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg font-bold transition-colors animate-fast-pulse translate-y-10"
         >
           下一关 →
