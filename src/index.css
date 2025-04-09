@@ -9,10 +9,10 @@ html, body {
   padding: 0;
   height: 100%;
   overflow: hidden;
-  transform: scale(1.5);
+  transform: scale(1.1);
   transform-origin: center center;
-  width: 66.67%;
-  height: 66.67%;
+  width: 90%;
+  height: 90%;
   margin: auto;
   position: absolute;
   top: 0;
