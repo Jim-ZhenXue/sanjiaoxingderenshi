@@ -9,6 +9,16 @@ html, body {
   padding: 0;
   height: 100%;
   overflow: hidden;
+  transform: scale(1.5);
+  transform-origin: center center;
+  width: 66.67%;
+  height: 66.67%;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 :root {
