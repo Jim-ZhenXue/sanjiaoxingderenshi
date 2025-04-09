@@ -31,42 +31,42 @@ const PlaygroundLevel: React.FC<PlaygroundLevelProps> = ({ data, onSelect, selec
       
       {/* Clouds */}
       <g transform="translate(100,60)">
-        <ellipse cx="0" cy="0" rx="45" ry="30" fill="white" />
-        <ellipse cx="45" cy="0" rx="45" ry="30" fill="white" />
-        <ellipse cx="22" cy="-15" rx="30" ry="22" fill="white" />
+        <ellipse cx="0" cy="0" rx="30" ry="20" fill="white" />
+        <ellipse cx="30" cy="0" rx="30" ry="20" fill="white" />
+        <ellipse cx="15" cy="-10" rx="20" ry="15" fill="white" />
       </g>
       
       {/* Tree */}
-      <g transform="translate(0,0)">
-        <rect x="100" y="250" width="15" height="75" fill="#8B4513" />
+      <g transform="translate(-400,0)">
+        <rect x="465" y="300" width="10" height="50" fill="#8B4513" />
         <polygon 
-          points="80,250 107,180 135,250" 
+          points="450,300 470,250 490,300" 
           fill="green" 
           stroke={selectedItems.includes(2) ? "red" : "none"} 
-          strokeWidth={selectedItems.includes(2) ? 6 : 0} 
+          strokeWidth={selectedItems.includes(2) ? 3 : 0} 
           onClick={() => onSelect(2)} 
         />
       </g>
 
       {/* Pond */}
-      <ellipse cx="250" cy="300" rx="75" ry="30" fill="#1E90FF" />
+      <ellipse cx="300" cy="350" rx="50" ry="20" fill="#1E90FF" />
 
       {/* House */}
       {/* House Walls */}
-      <rect x="180" y="200" width="180" height="105" fill="#D2691E" />
+      <rect x="190" y="230" width="120" height="70" fill="#D2691E" />
       {/* House Roof */}
       <polygon 
-        points="180,200 270,130 360,200" 
+        points="190,230 250,180 310,230" 
         fill="#8B0000" 
         stroke={selectedItems.includes(1) ? "red" : "none"} 
         strokeWidth={selectedItems.includes(1) ? 3 : 0} 
         onClick={() => onSelect(1)} 
       />
       {/* Window */}
-      <rect x="215" y="230" width="30" height="30" fill="#ADD8E6" />
+      <rect x="215" y="250" width="20" height="20" fill="#ADD8E6" />
 
       {/* Bush */}
-      <ellipse cx="350" cy="320" rx="30" ry="15" fill="darkgreen" />
+      <ellipse cx="400" cy="370" rx="20" ry="10" fill="darkgreen" />
 
     </svg>
   );

@@ -31,12 +31,12 @@ const IdentificationLevel: React.FC<IdentificationLevelProps> = ({ data, onSelec
     }
 
     return (
-      <svg width="240" height="250" viewBox="-10 -10 70 70" className="transform scale-150 sm:scale-200">
+      <svg width="120" height="125" viewBox="-10 -10 70 70" className="transform scale-75 sm:scale-100">
         <path
           d={pathData}
           fill={selectedItems.includes(shape.id) ? 'rgba(59, 130, 246, 0.2)' : 'none'}
           stroke={selectedItems.includes(shape.id) ? '#3B82F6' : '#9CA3AF'}
-          strokeWidth={selectedItems.includes(shape.id) ? '1.5' : '0.5'}
+          strokeWidth={selectedItems.includes(shape.id) ? '0.75' : '0.25'}
           className={clsx(
             'transition-all duration-300',
             selectedItems.includes(shape.id) && 'scale-105'
