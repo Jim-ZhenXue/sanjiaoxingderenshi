@@ -20,7 +20,7 @@ const ConstructionLevel: React.FC<ConstructionLevelProps> = ({ data, onSelect, s
             .join(' ')}
           fill="rgba(59, 130, 246, 0.2)"
           stroke="#3B82F6"
-          strokeWidth="2"
+          strokeWidth="4"
         />
       )}
       {data.map((point) => (
@@ -29,7 +29,7 @@ const ConstructionLevel: React.FC<ConstructionLevelProps> = ({ data, onSelect, s
           <circle
             cx={point.x}
             cy={point.y}
-            r="18"
+            r="36"
             fill="transparent"
             className="cursor-pointer"
             onClick={() => onSelect(point.id)}
@@ -38,10 +38,10 @@ const ConstructionLevel: React.FC<ConstructionLevelProps> = ({ data, onSelect, s
           <circle
             cx={point.x}
             cy={point.y}
-            r="6"
+            r="12"
             fill={selectedItems.includes(point.id) ? '#3B82F6' : '#fff'}
             stroke="#3B82F6"
-            strokeWidth="2"
+            strokeWidth="4"
             pointerEvents="none"
           />
         </g>

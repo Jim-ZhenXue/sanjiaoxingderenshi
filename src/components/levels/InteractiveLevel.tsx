@@ -105,7 +105,7 @@ const InteractiveLevel: React.FC<InteractiveLevelProps> = ({ data, onNextLevel }
           points={vertices.map(v => `${v.x},${v.y}`).join(' ')}
           fill="rgba(59, 130, 246, 0.2)"
           stroke="#3B82F6"
-          strokeWidth="2"
+          strokeWidth="4"
         />
         {vertices.map((vertex) => (
           <g key={vertex.id}>
@@ -113,7 +113,7 @@ const InteractiveLevel: React.FC<InteractiveLevelProps> = ({ data, onNextLevel }
             <circle
               cx={vertex.x}
               cy={vertex.y}
-              r="18"
+              r="36"
               fill="transparent"
               className="cursor-move"
               style={{ touchAction: 'none' }}
@@ -124,10 +124,10 @@ const InteractiveLevel: React.FC<InteractiveLevelProps> = ({ data, onNextLevel }
             <circle
               cx={vertex.x}
               cy={vertex.y}
-              r="6"
+              r="12"
               fill="#fff"
               stroke="#3B82F6"
-              strokeWidth="2"
+              strokeWidth="4"
               pointerEvents="none"
             />
           </g>
@@ -139,7 +139,7 @@ const InteractiveLevel: React.FC<InteractiveLevelProps> = ({ data, onNextLevel }
             soundManager.play('levelComplete');
             onNextLevel();
           }}
-          className="absolute bottom-4 right-4 px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg font-bold transition-colors animate-fast-pulse translate-y-10"
+          className="absolute bottom-8 right-8 px-12 py-6 bg-green-500 hover:bg-green-600 text-white rounded-xl font-bold transition-colors animate-fast-pulse translate-y-10 text-2xl"
         >
           下一关 →
         </button>
