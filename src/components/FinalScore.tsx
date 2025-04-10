@@ -20,7 +20,7 @@ export const FinalScore: React.FC<FinalScoreProps> = ({ onRestart }) => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center overflow-hidden">
+    <div className="min-h-screen bg-black flex items-center justify-center overflow-hidden" style={{ transform: 'scale(2)', transformOrigin: 'center top' }}>
       <div className="relative">
         <div className="absolute inset-0 animate-glow">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 opacity-30 blur-3xl"></div>

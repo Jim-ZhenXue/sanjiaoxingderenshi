@@ -40,7 +40,7 @@ export const Game: React.FC = () => {
     if (currentLevel === 1 && selectedItems.length === 3) {
       // 获取选中点的坐标
       const selectedPoints = selectedItems.map(id => 
-        level.data.find(p => p.id === id)
+        level.data.find((p: { id: number; x: number; y: number }) => p.id === id)
       ).filter((p): p is { id: number; x: number; y: number } => p !== undefined);
 
       // 检查是否三点共线
@@ -181,7 +181,7 @@ export const Game: React.FC = () => {
       ) : showFinalScore ? (
         <FinalScore onRestart={handleGameRestart} />
       ) : (
-        <div className="min-h-screen bg-black p-2 sm:p-5 flex items-center">
+        <div className="min-h-screen bg-black p-2 sm:p-5 flex items-center" style={{ transform: 'scale(2)', transformOrigin: 'center top' }}>
           <div className="w-full max-w-4xl mx-auto">
             <h1 className="text-xl sm:text-2xl font-bold text-center mb-2 sm:mb-4">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-pink-500 to-purple-600 animate-gradient tech-font">
