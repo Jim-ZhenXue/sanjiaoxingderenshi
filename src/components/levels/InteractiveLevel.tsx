@@ -43,13 +43,16 @@ const InteractiveLevel: React.FC<InteractiveLevelProps> = ({ data, onNextLevel }
 
     const svg = e.currentTarget;
     const rect = svg.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const scaleX = svg.clientWidth / svg.getBoundingClientRect().width;
+    const scaleY = svg.clientHeight / svg.getBoundingClientRect().height;
+    
+    const x = (e.clientX - rect.left) * scaleX;
+    const y = (e.clientY - rect.top) * scaleY;
 
     setVertices(prev =>
       prev.map(v =>
         v.id === draggedVertex
-          ? { ...v, x: Math.max(0, Math.min(x, 850)), y: Math.max(0, Math.min(y, 850)) }
+          ? { ...v, x: Math.max(0, Math.min(x, svg.clientWidth)), y: Math.max(0, Math.min(y, svg.clientHeight)) }
           : v
       )
     );
@@ -61,14 +64,17 @@ const InteractiveLevel: React.FC<InteractiveLevelProps> = ({ data, onNextLevel }
 
     const svg = e.currentTarget;
     const rect = svg.getBoundingClientRect();
+    const scaleX = svg.clientWidth / svg.getBoundingClientRect().width;
+    const scaleY = svg.clientHeight / svg.getBoundingClientRect().height;
+    
     const touch = e.touches[0];
-    const x = touch.clientX - rect.left;
-    const y = touch.clientY - rect.top;
+    const x = (touch.clientX - rect.left) * scaleX;
+    const y = (touch.clientY - rect.top) * scaleY;
 
     setVertices(prev =>
       prev.map(v =>
         v.id === draggedVertex
-          ? { ...v, x: Math.max(0, Math.min(x, 850)), y: Math.max(0, Math.min(y, 850)) }
+          ? { ...v, x: Math.max(0, Math.min(x, svg.clientWidth)), y: Math.max(0, Math.min(y, svg.clientHeight)) }
           : v
       )
     );
