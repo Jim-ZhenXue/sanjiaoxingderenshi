@@ -181,7 +181,7 @@ export const Game: React.FC = () => {
       ) : showFinalScore ? (
         <FinalScore onRestart={handleGameRestart} />
       ) : (
-        <div className="min-h-screen bg-black p-2 sm:p-5 flex items-center" style={{ transform: 'scale(2) translateY(-15%)', transformOrigin: 'center top' }}>
+        <div className="min-h-screen bg-black p-2 sm:p-5 flex items-center" style={{ transform: 'scale(2) translateY(-25%)', transformOrigin: 'center top' }}>
           <div className="w-full max-w-4xl mx-auto">
             <h1 className="text-xl sm:text-2xl font-bold text-center mb-2 sm:mb-4">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-pink-500 to-purple-600 animate-gradient tech-font">
