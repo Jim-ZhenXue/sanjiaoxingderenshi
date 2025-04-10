@@ -77,7 +77,7 @@ export const Celebration: React.FC<CelebrationProps> = ({ onFinish, score }) => 
   }, [onFinish]);
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50" style={{ transform: 'scale(2)', transformOrigin: 'center top' }}>
+    <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50" style={{ transform: 'scale(2) translateY(-15%)', transformOrigin: 'center top' }}>
       <div className="w-full h-full absolute">
         <canvas id="celebration-canvas" className="w-full h-full"></canvas>
       </div>

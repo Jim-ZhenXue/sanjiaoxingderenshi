@@ -25,7 +25,7 @@ export const CareerLink: React.FC<CareerLinkProps> = ({ score, onRestart, onFini
   }, [onFinish]);
 
   return (
-    <div className="fixed inset-0 bg-black flex items-center justify-center z-50" style={{ transform: 'scale(2)', transformOrigin: 'center top' }}>
+    <div className="fixed inset-0 bg-black flex items-center justify-center z-50" style={{ transform: 'scale(2) translateY(-15%)', transformOrigin: 'center top' }}>
       <div className="bg-white p-8 rounded-xl text-center relative z-10 shadow-2xl max-w-2xl w-full mx-4">
         <h2 className="text-3xl font-bold mb-6 text-purple-600">🎯 生涯探索</h2>
         
