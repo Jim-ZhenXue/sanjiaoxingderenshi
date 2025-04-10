@@ -9,7 +9,7 @@ interface ConstructionLevelProps {
 
 const ConstructionLevel: React.FC<ConstructionLevelProps> = ({ data, onSelect, selectedItems }) => {
   return (
-    <svg className="w-full h-[400px]">
+    <svg className="w-full h-[800px]">
       {selectedItems.length >= 2 && (
         <polygon
           points={selectedItems

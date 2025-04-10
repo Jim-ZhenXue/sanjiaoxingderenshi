@@ -94,7 +94,7 @@ const InteractiveLevel: React.FC<InteractiveLevelProps> = ({ data, onNextLevel }
   return (
     <div className="relative w-full">
       <svg
-        className="w-full h-[400px]"
+        className="w-full h-[800px]"
         onMouseMove={handleMouseMove}
         onTouchMove={handleTouchMove}
         onMouseUp={handleMouseUp}
