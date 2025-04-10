@@ -16,7 +16,7 @@ interface PlaygroundLevelProps {
 
 const PlaygroundLevel: React.FC<PlaygroundLevelProps> = ({ data, onSelect, selectedItems }) => {
   return (
-    <svg className="w-full h-[800px]">
+    <svg className="w-full h-[400px]">
       {/* Background */}
       <rect x="0" y="0" width="100%" height={data.elements.sky.height} fill={data.elements.sky.color} />
       <rect x="0" y={data.elements.sky.height} width="100%" height={data.elements.ground.height} fill={data.elements.ground.color} />

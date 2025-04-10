@@ -31,7 +31,7 @@ const IdentificationLevel: React.FC<IdentificationLevelProps> = ({ data, onSelec
     }
 
     return (
-      <svg width="240" height="250" viewBox="-10 -10 70 70" className="transform scale-75 sm:scale-100">
+      <svg width="120" height="125" viewBox="-10 -10 70 70" className="transform scale-75 sm:scale-100">
         <path
           d={pathData}
           fill={selectedItems.includes(shape.id) ? 'rgba(59, 130, 246, 0.2)' : 'none'}
